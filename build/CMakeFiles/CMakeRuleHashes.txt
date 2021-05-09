@@ -6,6 +6,8 @@ f6f6d89d30a7bb7405e69db144b96d2f res/shaders/billboard.vert.spv
 042da12adbcbc4407287492054b6db2d res/shaders/composition.vert.spv
 ef753d0a75fa9ffa17b565782054c511 res/shaders/imgui.frag.spv
 fefe7125aab1b30386e4ddb1537408bb res/shaders/imgui.vert.spv
+26f661e1f262688166503333877efe29 res/shaders/pbr.frag.spv
+cf20e9d9e26bac08672d2a0c7dff1440 res/shaders/pbr_transparent.frag.spv
 349866ef2d80de3fa9d32e01d49d0f02 res/shaders/shadow_map.frag.spv
 66612f88358e6cc7e8b82f29f1ebe5e3 res/shaders/shadow_map.vert.spv
 4a0b33a0268dcc01d0c68caea05f9899 res/shaders/shadow_map_animated.vert.spv

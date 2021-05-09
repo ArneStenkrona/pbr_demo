@@ -52,6 +52,7 @@ private:
 
     void update(float deltaTime);
     void updateCamera(float deltaTime);
+    void updateSun();
     void updateRenderData();
     void sampleAnimation(prt::vector<glm::mat4> & bones);
     void renderScene(Camera & camera, float deltaTime);

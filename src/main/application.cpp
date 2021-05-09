@@ -61,12 +61,28 @@ void Application::run() {
 void Application::update(float deltaTime) {
     m_time += deltaTime;
     m_input.update(false);
+    updateSun();
     updateCamera(deltaTime);
     renderScene(m_camera, deltaTime);
 }
 
 void Application::updateCamera(float deltaTime) {
     m_camera.update(deltaTime, true);
+}
+
+void Application::updateSun() {
+    float ph = 0.2f*m_time;
+    m_sun.phase = ph;
+    m_sun.direction = glm::normalize(glm::vec3(0.2f, glm::cos(ph), glm::sin(ph)));
+    float distToNoon = glm::acos(glm::dot(-m_sun.direction, glm::vec3(0,1,0))) / glm::pi<float>();
+    m_sun.color = glm::mix(glm::vec3(255,255,255), glm::vec3(255,153,51), distToNoon)/255.0f;
+
+    m_sun.distToNoon = glm::acos(glm::dot(-m_sun.direction, glm::vec3(0.0f,1.0f,0.0f))) / glm::pi<float>();
+    m_sun.nightColor = glm::mix(glm::vec3(80.0f,80.0f,250.0f), glm::vec3(0.0f), m_sun.distToNoon)/255.0f;
+    m_sun.dayColor = glm::mix(glm::vec3(204.0f,204.0f,255.0f), glm::vec3(5.0f,5.0f,25.0f), m_sun.distToNoon)/255.0f;
+    m_sun.sunEdgeColor = glm::vec3(255.0f,119.0f,51.0f)/255.0f;
+    m_sun.sunsetriseColor = glm::vec3(255.0f,119.0f,51.0f)/255.0f;
+    m_sun.sunColor = glm::mix(glm::vec3(255.0f,255.0f,230.0f), glm::vec3(255.0f,153.0f,51.0f), m_sun.distToNoon)/255.0f;
 }
 
 void Application::updateRenderData() {

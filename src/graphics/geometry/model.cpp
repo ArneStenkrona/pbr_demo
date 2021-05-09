@@ -54,27 +54,20 @@ bool Model::load(bool loadAnimation, TextureManager & textureManager) {
         aiColor3D color;
         scene->mMaterials[i]->Get(AI_MATKEY_COLOR_DIFFUSE, color);
 
-        materials[i].baseColor = { color.r, color.g, color.b, 1.0f };
+        materials[i].albedo = { color.r, color.g, color.b, 1.0f };
         
-        scene->mMaterials[i]->Get(AI_MATKEY_OPACITY, materials[i].baseColor.a);
+        scene->mMaterials[i]->Get(AI_MATKEY_OPACITY, materials[i].albedo.a);
         scene->mMaterials[i]->Get(AI_MATKEY_TWOSIDED, materials[i].twosided);
 
         
-        if (materials[i].baseColor.a < 1.0f) {
-            materials[i].type = Material::Type::transparent;
+        if (materials[i].albedo.a < 1.0f) {
+            materials[i].transparent = true;
         }
-        if (strstr(materials[i].name, "[water]") != NULL) {
-            materials[i].type = Material::Type::water;
-        }
-        if (strstr(materials[i].name, "[transparent]") != NULL) {
-            materials[i].type = Material::Type::transparent;
-        }
-        if (strstr(materials[i].name, "[gloss]") != NULL) {
-            materials[i].baseSpecularity = 1.0f;
-        }
-
 
         materials[i].albedoIndex = getTexture(*scene->mMaterials[i], aiTextureType_DIFFUSE, mPath, textureManager);
+        materials[i].metallicIndex = getTexture(*scene->mMaterials[i], aiTextureType_METALNESS, mPath, textureManager);
+        materials[i].roughnessIndex = getTexture(*scene->mMaterials[i], aiTextureType_DIFFUSE_ROUGHNESS, mPath, textureManager);
+        materials[i].aoIndex = getTexture(*scene->mMaterials[i], aiTextureType_AMBIENT_OCCLUSION, mPath, textureManager);
         materials[i].normalIndex = getTexture(*scene->mMaterials[i], aiTextureType_NORMALS, mPath, textureManager);
     }
 

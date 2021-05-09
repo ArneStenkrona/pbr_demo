@@ -76,6 +76,8 @@ CMakeFiles/Shaders: res/shaders/composition.frag.spv
 CMakeFiles/Shaders: res/shaders/composition.vert.spv
 CMakeFiles/Shaders: res/shaders/imgui.frag.spv
 CMakeFiles/Shaders: res/shaders/imgui.vert.spv
+CMakeFiles/Shaders: res/shaders/pbr.frag.spv
+CMakeFiles/Shaders: res/shaders/pbr_transparent.frag.spv
 CMakeFiles/Shaders: res/shaders/shadow_map.frag.spv
 CMakeFiles/Shaders: res/shaders/shadow_map.vert.spv
 CMakeFiles/Shaders: res/shaders/shadow_map_animated.vert.spv
@@ -112,73 +114,83 @@ res/shaders/imgui.vert.spv: ../res/shaders/imgui.vert
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/imgui.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/imgui.vert.spv
 
+res/shaders/pbr.frag.spv: ../res/shaders/pbr.frag
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating res/shaders/pbr.frag.spv"
+	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
+	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/pbr.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/pbr.frag.spv
+
+res/shaders/pbr_transparent.frag.spv: ../res/shaders/pbr_transparent.frag
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating res/shaders/pbr_transparent.frag.spv"
+	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
+	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/pbr_transparent.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/pbr_transparent.frag.spv
+
 res/shaders/shadow_map.frag.spv: ../res/shaders/shadow_map.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating res/shaders/shadow_map.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating res/shaders/shadow_map.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/shadow_map.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/shadow_map.frag.spv
 
 res/shaders/shadow_map.vert.spv: ../res/shaders/shadow_map.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating res/shaders/shadow_map.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating res/shaders/shadow_map.vert.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/shadow_map.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/shadow_map.vert.spv
 
 res/shaders/shadow_map_animated.vert.spv: ../res/shaders/shadow_map_animated.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating res/shaders/shadow_map_animated.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating res/shaders/shadow_map_animated.vert.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/shadow_map_animated.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/shadow_map_animated.vert.spv
 
 res/shaders/skybox.frag.spv: ../res/shaders/skybox.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating res/shaders/skybox.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating res/shaders/skybox.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/skybox.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/skybox.frag.spv
 
 res/shaders/skybox.vert.spv: ../res/shaders/skybox.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating res/shaders/skybox.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating res/shaders/skybox.vert.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/skybox.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/skybox.vert.spv
 
 res/shaders/standard.frag.spv: ../res/shaders/standard.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating res/shaders/standard.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating res/shaders/standard.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/standard.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/standard.frag.spv
 
 res/shaders/standard.vert.spv: ../res/shaders/standard.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating res/shaders/standard.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating res/shaders/standard.vert.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/standard.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/standard.vert.spv
 
 res/shaders/standard_animated.vert.spv: ../res/shaders/standard_animated.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating res/shaders/standard_animated.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating res/shaders/standard_animated.vert.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/standard_animated.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/standard_animated.vert.spv
 
 res/shaders/standard_transparent.frag.spv: ../res/shaders/standard_transparent.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating res/shaders/standard_transparent.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating res/shaders/standard_transparent.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/standard_transparent.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/standard_transparent.frag.spv
 
 res/shaders/stylized.frag.spv: ../res/shaders/stylized.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating res/shaders/stylized.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating res/shaders/stylized.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/stylized.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/stylized.frag.spv
 
 res/shaders/stylized_transparent.frag.spv: ../res/shaders/stylized_transparent.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating res/shaders/stylized_transparent.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Generating res/shaders/stylized_transparent.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/stylized_transparent.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/stylized_transparent.frag.spv
 
 res/shaders/stylized_water.frag.spv: ../res/shaders/stylized_water.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating res/shaders/stylized_water.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Generating res/shaders/stylized_water.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/stylized_water.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/stylized_water.frag.spv
 
 res/shaders/water.frag.spv: ../res/shaders/water.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Generating res/shaders/water.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Generating res/shaders/water.frag.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/water.frag -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/water.frag.spv
 
 res/shaders/water.vert.spv: ../res/shaders/water.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Generating res/shaders/water.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Generating res/shaders/water.vert.spv"
 	/usr/local/Cellar/cmake/3.19.1/bin/cmake -E make_directory /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/
 	/Users/arnestenkrona/Documents/libraries/vulkansdk-macos-1.2.131.2/macOS/bin/glslangValidator -V /Users/arnestenkrona/Documents/repositories/pbr_demo/res/shaders/water.vert -o /Users/arnestenkrona/Documents/repositories/pbr_demo/build/res/shaders/water.vert.spv
 
@@ -187,6 +199,8 @@ Shaders: res/shaders/composition.frag.spv
 Shaders: res/shaders/composition.vert.spv
 Shaders: res/shaders/imgui.frag.spv
 Shaders: res/shaders/imgui.vert.spv
+Shaders: res/shaders/pbr.frag.spv
+Shaders: res/shaders/pbr_transparent.frag.spv
 Shaders: res/shaders/shadow_map.frag.spv
 Shaders: res/shaders/shadow_map.vert.spv
 Shaders: res/shaders/shadow_map_animated.vert.spv

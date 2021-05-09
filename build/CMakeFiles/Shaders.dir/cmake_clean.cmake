@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "res/shaders/composition.vert.spv"
   "res/shaders/imgui.frag.spv"
   "res/shaders/imgui.vert.spv"
+  "res/shaders/pbr.frag.spv"
+  "res/shaders/pbr_transparent.frag.spv"
   "res/shaders/shadow_map.frag.spv"
   "res/shaders/shadow_map.vert.spv"
   "res/shaders/shadow_map_animated.vert.spv"

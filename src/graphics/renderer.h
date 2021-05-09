@@ -93,7 +93,6 @@ private:
         int shadowAnimated = -1;
         int transparent = -1;
         int transparentAnimated = -1;
-        int water = -1;
         int composition = -1;
         int gui = -1;
     } pipelineIndices;
@@ -175,7 +174,6 @@ private:
                               prt::vector<DrawCall> & transparent,
                               prt::vector<DrawCall> & animated,
                               prt::vector<DrawCall> & transparentAnimated,
-                              prt::vector<DrawCall> & water,
                               prt::vector<DrawCall> & shadow,
                               prt::vector<DrawCall> & shadowAnimated);
 

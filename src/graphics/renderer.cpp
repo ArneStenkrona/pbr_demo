@@ -101,8 +101,8 @@ void Renderer::initPipelines() {
 
     /* non-animated */
     createStandardAndShadowPipelines(standardAssetIndex, standardUboIndex, shadowMapUboIndex,
-                                     "shaders/standard.vert.spv", "shaders/stylized.frag.spv",
-                                     "shaders/stylized_transparent.frag.spv",
+                                     "shaders/standard.vert.spv", "shaders/pbr.frag.spv",
+                                     "shaders/pbr_transparent.frag.spv",
                                      "shaders/shadow_map.vert.spv",
                                      Model::Vertex::getBindingDescription(),
                                      Model::Vertex::getAttributeDescriptions(),
@@ -112,23 +112,14 @@ void Renderer::initPipelines() {
 
     /* animated */
     createStandardAndShadowPipelines(animatedStandardAssetIndex, animatedStandardUboIndex, animatedShadowMapUboIndex,
-                                     "shaders/standard_animated.vert.spv", "shaders/stylized.frag.spv",
-                                     "shaders/stylized_transparent.frag.spv",
+                                     "shaders/standard_animated.vert.spv", "shaders/pbr.frag.spv",
+                                     "shaders/pbr_transparent.frag.spv",
                                      "shaders/shadow_map_animated.vert.spv",
                                      Model::BonedVertex::getBindingDescription(),
                                      Model::BonedVertex::getAttributeDescriptions(),
                                      pipelineIndices.opaqueAnimated,
                                      pipelineIndices.transparentAnimated,
                                      pipelineIndices.shadowAnimated);
-
-    /* water */
-    char vert[256] = RESOURCE_PATH;
-    char frag[256] = RESOURCE_PATH;
-    strcat(vert, "shaders/standard.vert.spv");
-    strcat(frag, "shaders/stylized_water.frag.spv");
-    pipelineIndices.water = createStandardPipeline(standardAssetIndex, standardUboIndex, vert, frag,
-                                                   Model::Vertex::getBindingDescription(),
-                                                   Model::Vertex::getAttributeDescriptions(), true);
 
     /* skybox */
     // temporary workaround for loading empty skybox
@@ -744,7 +735,6 @@ void Renderer::bindAssets(Model const * models, size_t nModels,
                          getPipeline(pipelineIndices.transparent).drawCalls,
                          getPipeline(pipelineIndices.opaqueAnimated).drawCalls,
                          getPipeline(pipelineIndices.transparentAnimated).drawCalls,
-                         getPipeline(pipelineIndices.water).drawCalls,
                          getPipeline(pipelineIndices.shadow).drawCalls,
                          getPipeline(pipelineIndices.shadowAnimated).drawCalls);
 
@@ -1029,9 +1019,11 @@ void Renderer::loadTextures(size_t staticAssetIndex,
         prt::hash_map<int, int> & textureIndices = animated ? animatedTextureIndices : staticTextureIndices;
 
         for (auto const & material: models[i].materials) {
-            prt::array<int, 3> indices = { material.albedoIndex,
-                                           material.normalIndex,
-                                           material.specularIndex };
+            prt::array<int, 5> indices = { material.albedoIndex,
+                                           material.metallicIndex,
+                                           material.roughnessIndex,
+                                           material.aoIndex,
+                                           material.normalIndex };
             for (int ind : indices) {
                 if (ind != -1 && textureIndices.find(ind) == textureIndices.end()) {
                     Texture const & texture = textures[ind];
@@ -1101,14 +1093,12 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
                                     prt::vector<DrawCall> & transparent,
                                     prt::vector<DrawCall> & animated,
                                     prt::vector<DrawCall> & transparentAnimated,
-                                    prt::vector<DrawCall> & water,
                                     prt::vector<DrawCall> & shadow,
                                     prt::vector<DrawCall> & shadowAnimated) {
     standard.resize(0);
     transparent.resize(0);
     animated.resize(0);
     transparentAnimated.resize(0);
-    water.resize(0);
     shadow.resize(0);
     shadowAnimated.resize(0);
 
@@ -1134,33 +1124,29 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
             DrawCall drawCall;
             // find texture indices
             int albedoIndex = staticTextureIndices[material.albedoIndex];
+            int metallicIndex = staticTextureIndices[material.metallicIndex];
+            int roughnessIndex = staticTextureIndices[material.roughnessIndex];
+            int aoIndex = staticTextureIndices[material.aoIndex];
             int normalIndex = staticTextureIndices[material.normalIndex];
-            int specularIndex = staticTextureIndices[material.specularIndex];
             // push constants
             StandardPushConstants & pc = *reinterpret_cast<StandardPushConstants*>(drawCall.pushConstants.data());
             pc.modelMatrixIdx = i;
             pc.albedoIndex = albedoIndex;
+            pc.metallicIndex = metallicIndex;
+            pc.roughnessIndex = roughnessIndex;
+            pc.aoIndex = aoIndex;
             pc.normalIndex = normalIndex;
-            pc.specularIndex = specularIndex;
-
-            pc.baseColor = material.baseColor;
-            pc.baseSpecularity = material.baseSpecularity;
+            pc.albedo = material.albedo;
 
             // geometry
             drawCall.firstIndex = indexOffsets[staticModelIDs[i]] + mesh.startIndex;
             drawCall.indexCount = mesh.numIndices;
 
-            switch (material.type) {
-            case Model::Material::Type::standard :
+            if (material.transparent) {
+                transparent.push_back(drawCall);
+            } else {
                 standard.push_back(drawCall);
                 shadow.push_back(drawCall);
-                break;
-            case Model::Material::Type::transparent :
-                transparent.push_back(drawCall);
-                break;
-            case Model::Material::Type::water :
-                water.push_back(drawCall);
-                break;
             }
         }
     }
@@ -1174,35 +1160,30 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
             DrawCall drawCall;
             // find texture indices
             int albedoIndex = animatedTextureIndices[material.albedoIndex];
+            int metallicIndex = animatedTextureIndices[material.metallicIndex];
+            int roughnessIndex = animatedTextureIndices[material.roughnessIndex];
+            int aoIndex = animatedTextureIndices[material.aoIndex];
             int normalIndex = animatedTextureIndices[material.normalIndex];
-            int specularIndex = animatedTextureIndices[material.specularIndex];
-
             // push constants
             StandardPushConstants & pc = *reinterpret_cast<StandardPushConstants*>(drawCall.pushConstants.data());
             pc.modelMatrixIdx = i;
             pc.albedoIndex = albedoIndex;
+            pc.metallicIndex = metallicIndex;
+            pc.roughnessIndex = roughnessIndex;
+            pc.aoIndex = aoIndex;
             pc.normalIndex = normalIndex;
-            pc.specularIndex = specularIndex;
-            pc.baseColor = material.baseColor;
-            pc.baseSpecularity = material.baseSpecularity;
+            pc.albedo = material.albedo;
             pc.boneOffset = boneOffsets[i];
 
             // geometry
             drawCall.firstIndex = indexOffsets[animatedModelIDs[i]] + mesh.startIndex;
             drawCall.indexCount = mesh.numIndices;
 
-            switch (material.type) {
-            case Model::Material::Type::standard :
+            if (material.transparent) {
+                transparentAnimated.push_back(drawCall);
+            } else {
                 animated.push_back(drawCall);
                 shadowAnimated.push_back(drawCall);
-                break;
-            case Model::Material::Type::transparent :
-                transparentAnimated.push_back(drawCall);
-                break;
-            case Model::Material::Type::water :
-                assert(false && "Water material not supported for animated model!");
-                water.push_back(drawCall);
-                break;
             }
         }
     }
