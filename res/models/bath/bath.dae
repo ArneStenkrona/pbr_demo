@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.90.1 commit date:2020-09-23, commit time:06:43, hash:3e85bb34d0d7</authoring_tool>
     </contributor>
-    <created>2021-05-09T19:22:22</created>
-    <modified>2021-05-09T19:22:22</modified>
+    <created>2021-05-09T19:45:58</created>
+    <modified>2021-05-09T19:45:58</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -30,14 +30,14 @@
     </effect>
     <effect id="dirt-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff-surface">
+        <newparam sid="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff</init_from>
+            <init_from>TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff-sampler">
+        <newparam sid="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff-surface</source>
+            <source>TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -46,7 +46,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -57,14 +57,14 @@
     </effect>
     <effect id="wood1-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_WoodSiding4_1x1_512_albedo_tif-surface">
+        <newparam sid="TexturesCom_WoodSiding4_1x1_512_albedo_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_WoodSiding4_1x1_512_albedo_tif</init_from>
+            <init_from>TexturesCom_WoodSiding4_1x1_512_albedo_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_WoodSiding4_1x1_512_albedo_tif-sampler">
+        <newparam sid="TexturesCom_WoodSiding4_1x1_512_albedo_png-sampler">
           <sampler2D>
-            <source>TexturesCom_WoodSiding4_1x1_512_albedo_tif-surface</source>
+            <source>TexturesCom_WoodSiding4_1x1_512_albedo_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -73,7 +73,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_WoodSiding4_1x1_512_albedo_tif-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_WoodSiding4_1x1_512_albedo_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -84,14 +84,14 @@
     </effect>
     <effect id="roof_tiles-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Roofing_JapaneseOld_512_albedo_tif-surface">
+        <newparam sid="TexturesCom_Roofing_JapaneseOld_512_albedo_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Roofing_JapaneseOld_512_albedo_tif</init_from>
+            <init_from>TexturesCom_Roofing_JapaneseOld_512_albedo_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Roofing_JapaneseOld_512_albedo_tif-sampler">
+        <newparam sid="TexturesCom_Roofing_JapaneseOld_512_albedo_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Roofing_JapaneseOld_512_albedo_tif-surface</source>
+            <source>TexturesCom_Roofing_JapaneseOld_512_albedo_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -100,7 +100,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Roofing_JapaneseOld_512_albedo_tif-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Roofing_JapaneseOld_512_albedo_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -131,14 +131,14 @@
     </effect>
     <effect id="gravel-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Ground_RockBed4_512_albedo_tif-surface">
+        <newparam sid="TexturesCom_Ground_RockBed4_512_albedo_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Ground_RockBed4_512_albedo_tif</init_from>
+            <init_from>TexturesCom_Ground_RockBed4_512_albedo_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Ground_RockBed4_512_albedo_tif-sampler">
+        <newparam sid="TexturesCom_Ground_RockBed4_512_albedo_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Ground_RockBed4_512_albedo_tif-surface</source>
+            <source>TexturesCom_Ground_RockBed4_512_albedo_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -147,7 +147,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Ground_RockBed4_512_albedo_tif-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Ground_RockBed4_512_albedo_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -158,14 +158,14 @@
     </effect>
     <effect id="stone-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_BoulderBase_A_2x2_512_albedo_tif-surface">
+        <newparam sid="TexturesCom_BoulderBase_A_2x2_512_albedo_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_BoulderBase_A_2x2_512_albedo_tif</init_from>
+            <init_from>TexturesCom_BoulderBase_A_2x2_512_albedo_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_BoulderBase_A_2x2_512_albedo_tif-sampler">
+        <newparam sid="TexturesCom_BoulderBase_A_2x2_512_albedo_png-sampler">
           <sampler2D>
-            <source>TexturesCom_BoulderBase_A_2x2_512_albedo_tif-surface</source>
+            <source>TexturesCom_BoulderBase_A_2x2_512_albedo_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -174,7 +174,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_BoulderBase_A_2x2_512_albedo_tif-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_BoulderBase_A_2x2_512_albedo_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -185,14 +185,14 @@
     </effect>
     <effect id="curtain_red-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_red_tiff-surface">
+        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_red_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Fabric_Muslin_512_albedo_red_tiff</init_from>
+            <init_from>TexturesCom_Fabric_Muslin_512_albedo_red_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_red_tiff-sampler">
+        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_red_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Fabric_Muslin_512_albedo_red_tiff-surface</source>
+            <source>TexturesCom_Fabric_Muslin_512_albedo_red_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -201,7 +201,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Fabric_Muslin_512_albedo_red_tiff-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Fabric_Muslin_512_albedo_red_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -212,14 +212,14 @@
     </effect>
     <effect id="metal-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Metal_SteelRough_1K_albedo_tif-surface">
+        <newparam sid="TexturesCom_Metal_SteelRough_1K_albedo_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Metal_SteelRough_1K_albedo_tif</init_from>
+            <init_from>TexturesCom_Metal_SteelRough_1K_albedo_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Metal_SteelRough_1K_albedo_tif-sampler">
+        <newparam sid="TexturesCom_Metal_SteelRough_1K_albedo_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Metal_SteelRough_1K_albedo_tif-surface</source>
+            <source>TexturesCom_Metal_SteelRough_1K_albedo_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -228,7 +228,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Metal_SteelRough_1K_albedo_tif-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Metal_SteelRough_1K_albedo_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <reflectivity>
               <float sid="specular">1</float>
@@ -242,14 +242,14 @@
     </effect>
     <effect id="rice_paper-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff-surface">
+        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_red_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff</init_from>
+            <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_red_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff-sampler">
+        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_red_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff-surface</source>
+            <source>TexturesCom_Cardboard_WavyLayer_512_albedo_red_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -258,7 +258,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Cardboard_WavyLayer_512_albedo_red_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -269,14 +269,14 @@
     </effect>
     <effect id="white_wall-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff-surface">
+        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_white_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff</init_from>
+            <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_white_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff-sampler">
+        <newparam sid="TexturesCom_Cardboard_WavyLayer_512_albedo_white_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff-surface</source>
+            <source>TexturesCom_Cardboard_WavyLayer_512_albedo_white_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -285,7 +285,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Cardboard_WavyLayer_512_albedo_white_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -296,14 +296,14 @@
     </effect>
     <effect id="curtain-effect">
       <profile_COMMON>
-        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_blue_tiff-surface">
+        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_blue_png-surface">
           <surface type="2D">
-            <init_from>TexturesCom_Fabric_Muslin_512_albedo_blue_tiff</init_from>
+            <init_from>TexturesCom_Fabric_Muslin_512_albedo_blue_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_blue_tiff-sampler">
+        <newparam sid="TexturesCom_Fabric_Muslin_512_albedo_blue_png-sampler">
           <sampler2D>
-            <source>TexturesCom_Fabric_Muslin_512_albedo_blue_tiff-surface</source>
+            <source>TexturesCom_Fabric_Muslin_512_albedo_blue_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -312,7 +312,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="TexturesCom_Fabric_Muslin_512_albedo_blue_tiff-sampler" texcoord="UVMap"/>
+              <texture texture="TexturesCom_Fabric_Muslin_512_albedo_blue_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -323,35 +323,35 @@
     </effect>
   </library_effects>
   <library_images>
-    <image id="TexturesCom_BoulderBase_A_2x2_512_albedo_tif" name="TexturesCom_BoulderBase_A_2x2_512_albedo_tif">
-      <init_from>TexturesCom_BoulderBase_A_2x2_512_albedo.tif</init_from>
+    <image id="TexturesCom_BoulderBase_A_2x2_512_albedo_png" name="TexturesCom_BoulderBase_A_2x2_512_albedo_png">
+      <init_from>TexturesCom_BoulderBase_A_2x2_512_albedo.png</init_from>
     </image>
-    <image id="TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff" name="TexturesCom_Cardboard_WavyLayer_512_albedo_red_tiff">
-      <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_red.tiff</init_from>
+    <image id="TexturesCom_Cardboard_WavyLayer_512_albedo_red_png" name="TexturesCom_Cardboard_WavyLayer_512_albedo_red_png">
+      <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_red.png</init_from>
     </image>
-    <image id="TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff" name="TexturesCom_Cardboard_WavyLayer_512_albedo_white_tiff">
-      <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_white.tiff</init_from>
+    <image id="TexturesCom_Cardboard_WavyLayer_512_albedo_white_png" name="TexturesCom_Cardboard_WavyLayer_512_albedo_white_png">
+      <init_from>TexturesCom_Cardboard_WavyLayer_512_albedo_white.png</init_from>
     </image>
-    <image id="TexturesCom_Fabric_Muslin_512_albedo_blue_tiff" name="TexturesCom_Fabric_Muslin_512_albedo_blue_tiff">
-      <init_from>TexturesCom_Fabric_Muslin_512_albedo_blue.tiff</init_from>
+    <image id="TexturesCom_Fabric_Muslin_512_albedo_blue_png" name="TexturesCom_Fabric_Muslin_512_albedo_blue_png">
+      <init_from>TexturesCom_Fabric_Muslin_512_albedo_blue.png</init_from>
     </image>
-    <image id="TexturesCom_Fabric_Muslin_512_albedo_red_tiff" name="TexturesCom_Fabric_Muslin_512_albedo_red_tiff">
-      <init_from>TexturesCom_Fabric_Muslin_512_albedo_red.tiff</init_from>
+    <image id="TexturesCom_Fabric_Muslin_512_albedo_red_png" name="TexturesCom_Fabric_Muslin_512_albedo_red_png">
+      <init_from>TexturesCom_Fabric_Muslin_512_albedo_red.png</init_from>
     </image>
-    <image id="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff" name="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_tiff">
-      <init_from>TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker.tiff</init_from>
+    <image id="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png" name="TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker_png">
+      <init_from>TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker.png</init_from>
     </image>
-    <image id="TexturesCom_Ground_RockBed4_512_albedo_tif" name="TexturesCom_Ground_RockBed4_512_albedo_tif">
-      <init_from>TexturesCom_Ground_RockBed4_512_albedo.tif</init_from>
+    <image id="TexturesCom_Ground_RockBed4_512_albedo_png" name="TexturesCom_Ground_RockBed4_512_albedo_png">
+      <init_from>TexturesCom_Ground_RockBed4_512_albedo.png</init_from>
     </image>
-    <image id="TexturesCom_Metal_SteelRough_1K_albedo_tif" name="TexturesCom_Metal_SteelRough_1K_albedo_tif">
-      <init_from>TexturesCom_Metal_SteelRough_1K_albedo.tif</init_from>
+    <image id="TexturesCom_Metal_SteelRough_1K_albedo_png" name="TexturesCom_Metal_SteelRough_1K_albedo_png">
+      <init_from>TexturesCom_Metal_SteelRough_1K_albedo.png</init_from>
     </image>
-    <image id="TexturesCom_Roofing_JapaneseOld_512_albedo_tif" name="TexturesCom_Roofing_JapaneseOld_512_albedo_tif">
-      <init_from>TexturesCom_Roofing_JapaneseOld_512_albedo.tif</init_from>
+    <image id="TexturesCom_Roofing_JapaneseOld_512_albedo_png" name="TexturesCom_Roofing_JapaneseOld_512_albedo_png">
+      <init_from>TexturesCom_Roofing_JapaneseOld_512_albedo.png</init_from>
     </image>
-    <image id="TexturesCom_WoodSiding4_1x1_512_albedo_tif" name="TexturesCom_WoodSiding4_1x1_512_albedo_tif">
-      <init_from>TexturesCom_WoodSiding4_1x1_512_albedo.tif</init_from>
+    <image id="TexturesCom_WoodSiding4_1x1_512_albedo_png" name="TexturesCom_WoodSiding4_1x1_512_albedo_png">
+      <init_from>TexturesCom_WoodSiding4_1x1_512_albedo.png</init_from>
     </image>
   </library_images>
   <library_materials>
