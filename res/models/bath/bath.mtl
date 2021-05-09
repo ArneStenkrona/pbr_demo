@@ -1,0 +1,168 @@
+# Blender MTL File: 'bath.blend'
+# Material Count: 13
+
+newmtl curtain
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 10.000000 TexturesCom_Fabric_Muslin_512_normal.png
+map_Kd TexturesCom_Fabric_Muslin_512_albedo_blue.png
+map_Ns TexturesCom_Fabric_Muslin_512_roughness.png
+
+newmtl curtain_red
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 10.000000 TexturesCom_Fabric_Muslin_512_normal.png
+map_Kd TexturesCom_Fabric_Muslin_512_albedo_red.png
+map_Ns TexturesCom_Fabric_Muslin_512_roughness.png
+
+newmtl dirt
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 3.800000 TexturesCom_Ground_PineNeedles_2x2_512_normal.png
+map_Kd TexturesCom_Ground_PineNeedles_2x2_512_albedo_darker.png
+map_Ns TexturesCom_Ground_PineNeedles_2x2_512_roughness.png
+
+newmtl gravel
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump TexturesCom_Ground_RockBed4_512_normal.png
+map_Kd TexturesCom_Ground_RockBed4_512_albedo.png
+map_Ns TexturesCom_Ground_RockBed4_512_roughness.png
+
+newmtl leaves
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.001210 0.029100 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl metal
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.017388 0.017388 0.017388
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump TexturesCom_Metal_SteelRough_1K_normal.png
+map_Kd TexturesCom_Metal_SteelRough_1K_albedo.png
+map_Ns TexturesCom_Metal_SteelRough_1K_roughness.png
+refl TexturesCom_Metal_SteelRough_1K_metallic.png
+
+newmtl rice_paper
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump TexturesCom_Cardboard_WavyLayer_512_normal.png
+map_Kd TexturesCom_Cardboard_WavyLayer_512_albedo_red.png
+map_Ns TexturesCom_Cardboard_WavyLayer_512_roughness.png
+
+newmtl roof_tiles
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump TexturesCom_Roofing_JapaneseOld_512_normal.png
+map_Kd TexturesCom_Roofing_JapaneseOld_512_albedo.png
+map_Ns TexturesCom_Roofing_JapaneseOld_512_roughness.png
+
+newmtl stone
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 4.800000 TexturesCom_BoulderBase_A_2x2_512_normal.png
+map_Kd TexturesCom_BoulderBase_A_2x2_512_albedo.png
+map_Ns TexturesCom_BoulderBase_A_2x2_512_roughness.png
+
+newmtl tree
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump TexturesCom_PineBark2_512_normal.png
+map_Kd TexturesCom_PineBark2_512_albedo_darker.png
+map_Ns TexturesCom_PineBark2_512_roughness.png
+
+newmtl water
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.080010 0.080010 0.080010
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.333000
+d 0.567376
+illum 9
+map_Bump water_normal.png
+
+newmtl white_wall
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 3.900000 TexturesCom_Cardboard_WavyLayer_512_normal.png
+map_Kd TexturesCom_Cardboard_WavyLayer_512_albedo_white.png
+map_Ns TexturesCom_Cardboard_WavyLayer_512_roughness.png
+
+newmtl wood1
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump TexturesCom_WoodSiding4_1x1_512_normal.png
+map_Kd TexturesCom_WoodSiding4_1x1_512_albedo.png
+map_Ns TexturesCom_WoodSiding4_1x1_512_roughness.png
+refl TexturesCom_WoodSiding4_1x1_512_metallic.png
