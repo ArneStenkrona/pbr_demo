@@ -1,7 +1,7 @@
 ## PBR DEMO
 Work in progress, physically based rendering demonstration. 
 
-<img src="imgs/example1.png" width="500">
+<img src="res/imgs/example1.png" width="500">
 
 ## Dependencies
 [CMake]()  
