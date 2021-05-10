@@ -50,10 +50,12 @@ bool Model::load(bool loadAnimation, TextureManager & textureManager) {
         aiString matName;
         aiGetMaterialString(scene->mMaterials[i], AI_MATKEY_NAME, &matName);
         strcpy(materials[i].name, matName.C_Str());
- 
+
         aiColor3D color;
         scene->mMaterials[i]->Get(AI_MATKEY_COLOR_DIFFUSE, color);
-
+        scene->mMaterials[i]->Get(AI_MATKEY_COLOR_SPECULAR, materials[i].roughness);
+        scene->mMaterials[i]->Get(AI_MATKEY_COLOR_AMBIENT, materials[i].ao);
+        
         materials[i].albedo = { color.r, color.g, color.b, 1.0f };
         
         scene->mMaterials[i]->Get(AI_MATKEY_OPACITY, materials[i].albedo.a);
@@ -65,10 +67,12 @@ bool Model::load(bool loadAnimation, TextureManager & textureManager) {
         }
 
         materials[i].albedoIndex = getTexture(*scene->mMaterials[i], aiTextureType_DIFFUSE, mPath, textureManager);
-        materials[i].metallicIndex = getTexture(*scene->mMaterials[i], aiTextureType_METALNESS, mPath, textureManager);
-        materials[i].roughnessIndex = getTexture(*scene->mMaterials[i], aiTextureType_DIFFUSE_ROUGHNESS, mPath, textureManager);
-        materials[i].aoIndex = getTexture(*scene->mMaterials[i], aiTextureType_AMBIENT_OCCLUSION, mPath, textureManager);
+        materials[i].metallicIndex = getTexture(*scene->mMaterials[i], aiTextureType_EMISSIVE, mPath, textureManager);
+        materials[i].roughnessIndex = getTexture(*scene->mMaterials[i], aiTextureType_SHININESS, mPath, textureManager);
+        materials[i].aoIndex = getTexture(*scene->mMaterials[i], aiTextureType_AMBIENT, mPath, textureManager);
         materials[i].normalIndex = getTexture(*scene->mMaterials[i], aiTextureType_NORMALS, mPath, textureManager);
+        
+        materials[i].metallic = materials[i].metallicIndex == -1 ? 0.0f : 1.0f;
     }
 
     /* Process node hierarchy */

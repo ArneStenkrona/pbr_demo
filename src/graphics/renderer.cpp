@@ -40,8 +40,8 @@ void Renderer::render(float deltaTime, RenderGroupMask renderGroupMask) {
 }
 
 void Renderer::initFBAs() {
-    pushBackDepthFBA();
-    pushBackDepthFBA();
+    fbaIndices.depth = pushBackDepthFBA();
+    fbaIndices.guiDepth = pushBackDepthFBA();
     pushBackAccumulationFBA(); 
     pushBackRevealageFBA(); 
     pushBackShadowFBA();
@@ -809,7 +809,7 @@ void Renderer::updateUBOs(prt::vector<glm::mat4> const & modelMatrices,
         // lights
         standardUBO.lighting.sun.color = sun.color;
         standardUBO.lighting.sun.direction = sun.direction;
-        standardUBO.lighting.ambientLight = 0.2f;
+        standardUBO.lighting.ambientLight = 0.03f;
         standardUBO.lighting.noPointLights = glm::min(size_t(NUMBER_SUPPORTED_POINTLIGHTS), pointLights.size());
         for (unsigned int i = 0; i < standardUBO.lighting.noPointLights; ++i) {
             standardUBO.lighting.pointLights[i] = pointLights[i];
@@ -966,7 +966,7 @@ void Renderer::updateCascades(glm::mat4 const & projectionMatrix,
 
         glm::vec3 maxExtents = glm::vec3{radius};
         glm::vec3 minExtents = -maxExtents;
-        glm::mat4 cascadeView = glm::lookAt(frustumCenter - lightDir * -minExtents.z, frustumCenter, {0.0f, 1.0f, 0.0f});
+        glm::mat4 cascadeView = glm::lookAt(frustumCenter - glm::normalize(lightDir) * -minExtents.z, frustumCenter, {0.0f, 1.0f, 0.0f});
         // I use negative maxShadowDistance as minExtents in Z axis in order to get
         // shadow casters behind camera.
         // This is not ideal but a work-around for now
@@ -1137,6 +1137,9 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
             pc.aoIndex = aoIndex;
             pc.normalIndex = normalIndex;
             pc.albedo = material.albedo;
+            pc.roughness = material.roughness;
+            pc.ao = material.ao;
+            pc.metallic = material.metallic;
 
             // geometry
             drawCall.firstIndex = indexOffsets[staticModelIDs[i]] + mesh.startIndex;
@@ -1173,6 +1176,9 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
             pc.aoIndex = aoIndex;
             pc.normalIndex = normalIndex;
             pc.albedo = material.albedo;
+            pc.roughness = material.roughness;
+            pc.ao = material.ao;
+            pc.metallic = material.metallic;
             pc.boneOffset = boneOffsets[i];
 
             // geometry

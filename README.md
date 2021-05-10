@@ -1,7 +1,7 @@
 ## PBR DEMO
-...
+Work in progress, physically based rendering demonstration. 
 
-<img src="images/prt2_screen.png" width="500">
+<img src="imgs/example1.png" width="500">
 
 ## Dependencies
 [CMake]()  
@@ -31,7 +31,7 @@ If you are not using *~/.profile* as your shell profile you should change *~/.pr
 
 * Make sure you are in the root directory
 ```
-$ cd [YOUR PATH TO prototype2]
+$ cd [YOUR PATH TO pbr_demo]
 ```
 
 * Then run the following

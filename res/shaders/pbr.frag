@@ -98,7 +98,7 @@ float GeometrySchlickGGX(float NdotV, float roughness) {
 }
 
 float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness) {
-    float NdotV = max(dot(N,V), 0.0);
+    float NdotV = max(dot(N, V), 0.0);
     float NdotL = max(dot(N, L), 0.0);
     float ggx2 = GeometrySchlickGGX(NdotV, roughness);
     float ggx1 = GeometrySchlickGGX(NdotL, roughness);
@@ -113,29 +113,27 @@ vec3 CalcPointLight(int   i,
                     vec3  albedo, 
                     float metallic,
                     float roughness) {
-    vec3 L = normalize(transpose(fs_in.invtbn) * ubo.pointLights[i].pos - fs_in.tangentFragPos);
+    vec3 L = normalize(ubo.pointLights[i].pos - fs_in.fragPos);
     vec3 H = normalize(V + L);
 
-    float dist = length(ubo.pointLights[i].pos - fs_in.fragPos);
+    float dist = length(ubo.pointLights[i].pos  - fs_in.fragPos);
     float attenuation = 1.0 / (dist * dist);
     vec3 radiance = ubo.pointLights[i].color * attenuation;
 
-    vec3 F = fresnelSchlick(max(dot(H, V), 0.0), F0);
-
     float NDF = DistributionGGX(N, H, roughness);
     float G = GeometrySmith(N, V, L, roughness);
+    vec3 F = fresnelSchlick(clamp(dot(H, V), 0.0, 1.0), F0);
+
+    vec3 kS = F;
+    vec3 kD = vec3(1.0) - kS;
+    kD *= 1.0 - metallic;
 
     vec3 numerator = NDF * G * F;
     float denominator = 4.0 * max(dot(N, V), 0.0) * max(dot(N,L), 0.0);
     vec3 specular = numerator / max(denominator, 0.001);
 
-    vec3 kS = F;
-    vec3 kD = vec3(1.0) - kS;
-
-    kD *= 1.0 - metallic;
-
     float NdotL = max(dot(N, L), 0.0);
-    vec3 contribution = (kD * albedo / PI * specular) * radiance * NdotL;
+    vec3 contribution = (kD * albedo / PI + specular) * radiance * NdotL;
 
     return contribution;
 }
@@ -148,7 +146,7 @@ vec3 CalcDirLight(vec3  direction,
                   vec3  albedo, 
                   float metallic,
                   float roughness) {
-    vec3 L = normalize(transpose(fs_in.invtbn) * -direction);
+    vec3 L = normalize(-direction);
     vec3 H = normalize(V + L);
 
     // float dist = length(ubo.pointLights[i].pos - fs_in.fragPos);
@@ -175,6 +173,35 @@ vec3 CalcDirLight(vec3  direction,
     return contribution;
 }
 
+float textureProj(vec4 shadowCoord, vec2 off, int cascadeIndex) {
+    float shadow = 1.0f;
+
+    float dist = texture(shadowMap, vec3(shadowCoord.st + off, cascadeIndex)).r;
+    if (shadowCoord.w > 0.0 && dist < shadowCoord.z) {
+        shadow = 0.0f;
+    }
+
+    return shadow;
+}
+
+float filterPCF(vec4 shadowCoord, int cascadeIndex) {
+    ivec2 textDim = textureSize(shadowMap, 0).xy;
+    float scale = 1.0;
+    float dx = scale * 1.0 / float(textDim.x);
+    float dy = scale * 1.0 / float(textDim.y);
+
+    float shadowFactor = 0.0;
+    int count = 0;
+    int range = 1;
+
+    for (int x = -range; x <= range; ++x) {
+        for (int y = -range; y <= range; ++y) {
+            shadowFactor += textureProj(shadowCoord, vec2(dx*x, dy*y), cascadeIndex);
+            ++count;
+        }
+    }
+    return shadowFactor / count;
+}
 
 void main() {
     vec3 albedo = material.albedoIndex < 0 ? material.albedo.rgb:
@@ -190,7 +217,9 @@ void main() {
     vec3 N = material.normalIndex < 0 ? vec3(0,0,1) :
                     2.0 * texture(sampler2D(textures[material.normalIndex], samp), fs_in.fragTexCoord).rgb - 1.0;
 
-    vec3 V = normalize(transpose(fs_in.invtbn) * ubo.viewPos - fs_in.fragPos);
+    N = normalize(fs_in.invtbn * N);
+
+    vec3 V = normalize(ubo.viewPos - fs_in.fragPos);
 
     vec3 F0 = vec3(0.04);
     F0 = mix(F0, albedo, metallic);
@@ -200,8 +229,18 @@ void main() {
         Lo += CalcPointLight(i, V, N, F0, albedo, metallic, roughness);
     }
 
-    Lo += CalcDirLight(ubo.sun.direction, ubo.sun.color, 
-                       V, N, F0, albedo, metallic, roughness);
+    int cascadeIndex = 0;
+    for (int i = 0; i < 5 - 1; ++i) {
+        if (fs_in.shadowPos.z < ubo.splitDepths[i/4][i%4]) {
+            cascadeIndex = i + 1;
+        }
+    }
+    vec4 sunShadowCoord = (biasMat * ubo.cascadeSpace[cascadeIndex] * vec4(fs_in.fragPos + 0.01f * fs_in.fragNormal, 1.0));
+    sunShadowCoord = sunShadowCoord / sunShadowCoord.w;
+
+    Lo += filterPCF(sunShadowCoord, cascadeIndex).r *
+            CalcDirLight(ubo.sun.direction, ubo.sun.color, 
+                         V, N, F0, albedo, metallic, roughness);
 
 
     vec3 ambient = vec3(ubo.ambientLight) * albedo * ao;

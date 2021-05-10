@@ -28,7 +28,7 @@ layout(set = 0, binding = 1) uniform samplerCube samplerCubeMap;
 
 void main()
 {    
-    vec4 texColor = texture(samplerCubeMap, fs_in.TexCoords);
+    vec4 texColor = texture(samplerCubeMap, fs_in.fragPos);
 
     float sunSize = 0.02;
 
