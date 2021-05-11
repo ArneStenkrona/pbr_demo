@@ -137,13 +137,14 @@ map_Ka TexturesCom_PineBark2_512_ao.png
 newmtl water
 Ns 225.000000
 Ka 1.000000 1.000000 1.000000
-Kd 0.080010 0.080010 0.080010
+Kd 0.050010 0.050010 0.080010
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.333000
 d 0.567376
 illum 9
 map_Kn water_normal.png
+map_Ns water_normal_roughness.png
 
 newmtl white_wall
 Ns 225.000000

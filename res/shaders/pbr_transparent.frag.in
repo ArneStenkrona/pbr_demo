@@ -138,6 +138,8 @@ vec3 CalcPointLight(int i,
     float NdotL = max(dot(N, L), 0.0);
     vec3 contribution = (kD * albedo / PI + specular) * radiance * NdotL;
 
+    float alpha = dot(refract(L, N, 1.333), V);
+
     return contribution;
 }
 
@@ -172,6 +174,8 @@ vec3 CalcDirLight(vec3  direction,
 
     float NdotL = max(dot(N, L), 0.0);
     vec3 contribution = (kD * albedo / PI + specular) * radiance * NdotL;
+
+    float alpha = dot(refract(L, N, 1.333), V);
 
     return contribution;
 }
@@ -235,14 +239,15 @@ void main() {
     Lo += CalcDirLight(ubo.sun.direction, ubo.sun.color, 
                        V, N, F0, albedo, metallic, roughness);
 
-
     vec3 ambient = vec3(ubo.ambientLight) * albedo * ao;
     vec3 color = ambient + Lo;
     // gamma correction
     color = color / (color + vec3(1.0));
     color = pow(color, vec3(1.0/2.2));
 
-    vec4 outColor = vec4(color, material.albedo.a);
+    float alpha = material.albedo.a + 0.5 * pow(1.0 + dot(-V, N), 5);
+
+    vec4 outColor = vec4(color, alpha);
 
     float weight = 
         max(min(1.0, max( max(outColor.r, outColor.g), outColor.b ) * outColor.a ) , outColor.a) *
