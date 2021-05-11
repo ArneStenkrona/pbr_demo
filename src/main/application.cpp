@@ -174,8 +174,8 @@ void Application::bindRenderData() {
 
     m_assetManager.getModelManager().getModels(m_renderData.models, m_renderData.nModels);
 
-    m_renderData.staticTransforms.resize(m_renderData.staticModelIDs.size());
-    m_renderData.animatedTransforms.resize(m_renderData.animatedModelIDs.size());
+    m_renderData.staticTransforms.resize(m_renderData.staticModelIDs.size(), glm::mat4(1.0f));
+    m_renderData.animatedTransforms.resize(m_renderData.animatedModelIDs.size(), glm::mat4(1.0f));
 
     m_renderData.boneOffsets.resize(m_renderData.animatedModelIDs.size());
     m_assetManager.getModelManager().getBoneOffsets(m_renderData.animatedModelIDs.data(),

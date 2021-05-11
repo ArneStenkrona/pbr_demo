@@ -193,7 +193,7 @@ void Renderer::createCompositionPipeline() {
     GraphicsPipeline & pipeline = getPipeline(pipelineIndices.composition);
 
     pipeline.type = PIPELINE_TYPE_COMPOSITION;
-    pipeline.renderPassIndex = renderPassIndices.scene;;
+    pipeline.renderPassIndex = renderPassIndices.scene;
     pipeline.subpass = 2;
 
     pipeline.assetsIndex = pushBackAssets();
@@ -823,7 +823,7 @@ void Renderer::updateUBOs(prt::vector<glm::mat4> const & modelMatrices,
         auto shadowUboData = getUniformBufferData(getPipeline(pipelineIndices.shadow).uboIndex).uboData.data();
         ShadowMapUBO & shadowUBO = *reinterpret_cast<ShadowMapUBO*>(shadowUboData);
         // shadow model
-        memcpy(shadowUBO.model, standardUBO.model.model, sizeof(standardUBO.model.model[0]) * animatedModelMatrices.size());
+        memcpy(shadowUBO.model, standardUBO.model.model, sizeof(standardUBO.model.model[0]) * modelMatrices.size());
         // depth view and projection;
         for (unsigned int i = 0; i < cascadeSpace.size(); ++i) {
             shadowUBO.depthVP[i] = cascadeSpace[i];

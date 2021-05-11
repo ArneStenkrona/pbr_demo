@@ -236,8 +236,18 @@ void main() {
         Lo += CalcPointLight(i, V, N, F0, albedo, metallic, roughness);
     }
 
-    Lo += CalcDirLight(ubo.sun.direction, ubo.sun.color, 
-                       V, N, F0, albedo, metallic, roughness);
+    int cascadeIndex = 0;
+    for (int i = 0; i < @NUMBER_SHADOWMAP_CASCADES@ - 1; ++i) {
+        if (fs_in.shadowPos.z < ubo.splitDepths[i/4][i%4]) {
+            cascadeIndex = i + 1;
+        }
+    }
+    vec4 sunShadowCoord = (biasMat * ubo.cascadeSpace[cascadeIndex] * vec4(fs_in.fragPos + 0.01f * fs_in.fragNormal, 1.0));
+    sunShadowCoord = sunShadowCoord / sunShadowCoord.w;
+
+    Lo += filterPCF(sunShadowCoord, cascadeIndex).r *
+            CalcDirLight(ubo.sun.direction, ubo.sun.color, 
+                         V, N, F0, albedo, metallic, roughness);
 
     vec3 ambient = vec3(ubo.ambientLight) * albedo * ao;
     vec3 color = ambient + Lo;
