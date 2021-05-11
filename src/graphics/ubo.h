@@ -55,6 +55,7 @@ struct StandardPushConstants {
     alignas(4)  float     metallic;
     alignas(4)  float     roughness;
     alignas(4)  float     ao;
+    alignas(4)  float     emissive;
     alignas(4)  int32_t   aoIndex;
     alignas(4)  int32_t   normalIndex;
     alignas(4)  uint32_t  boneOffset;

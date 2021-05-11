@@ -1138,6 +1138,7 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
             pc.normalIndex = normalIndex;
             pc.albedo = material.albedo;
             pc.roughness = material.roughness;
+            pc.emissive = material.emissive;
             pc.ao = material.ao;
             pc.metallic = material.metallic;
 
@@ -1177,6 +1178,7 @@ void Renderer::createModelDrawCalls(Model const * models, size_t nModels,
             pc.normalIndex = normalIndex;
             pc.albedo = material.albedo;
             pc.roughness = material.roughness;
+            pc.emissive = material.emissive;
             pc.ao = material.ao;
             pc.metallic = material.metallic;
             pc.boneOffset = boneOffsets[i];

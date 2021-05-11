@@ -55,6 +55,7 @@ bool Model::load(bool loadAnimation, TextureManager & textureManager) {
         scene->mMaterials[i]->Get(AI_MATKEY_COLOR_DIFFUSE, color);
         scene->mMaterials[i]->Get(AI_MATKEY_COLOR_SPECULAR, materials[i].roughness);
         scene->mMaterials[i]->Get(AI_MATKEY_COLOR_AMBIENT, materials[i].ao);
+        scene->mMaterials[i]->Get(AI_MATKEY_COLOR_EMISSIVE, materials[i].emissive);
         
         materials[i].albedo = { color.r, color.g, color.b, 1.0f };
         

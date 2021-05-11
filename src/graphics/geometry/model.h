@@ -125,6 +125,7 @@ struct Model::Material {
     float metallic = 0.0f;
     float roughness = 0.5f;
     float ao = 1.0f;
+    float emissive = 0.0f;
     int32_t albedoIndex = -1;
     int32_t metallicIndex = -1;
     int32_t roughnessIndex = -1;

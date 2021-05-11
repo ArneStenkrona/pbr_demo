@@ -46,8 +46,9 @@ layout(push_constant) uniform MATERIAL {
     layout(offset = 32) float metallic;
     layout(offset = 36) float roughness;
     layout(offset = 40) float ao;
-    layout(offset = 44) int   aoIndex;
-    layout(offset = 48) int   normalIndex;
+    layout(offset = 44) float emissive;
+    layout(offset = 48) int   aoIndex;
+    layout(offset = 52) int   normalIndex;
 } material;
 
 layout(location = 0) in VS_OUT {
@@ -118,7 +119,10 @@ vec3 CalcPointLight(int i,
     vec3 H = normalize(V + L);
 
     float dist = length(ubo.pointLights[i].pos - fs_in.fragPos);
-    float attenuation = 1.0 / (dist * dist);
+    float a =  ubo.pointLights[i].a * dist * dist;
+    float b =  ubo.pointLights[i].c * dist;
+    float c =  ubo.pointLights[i].c;
+    float attenuation = 1.0 / (a + b + c);
     vec3 radiance = ubo.pointLights[i].color * attenuation;
 
     vec3 F = fresnelSchlick(max(dot(H, V), 0.0), F0);
@@ -250,7 +254,8 @@ void main() {
                          V, N, F0, albedo, metallic, roughness);
 
     vec3 ambient = vec3(ubo.ambientLight) * albedo * ao;
-    vec3 color = ambient + Lo;
+    vec3 emissive = albedo * material.emissive;
+    vec3 color = ambient + emissive + Lo;
     // gamma correction
     color = color / (color + vec3(1.0));
     color = pow(color, vec3(1.0/2.2));

@@ -78,14 +78,15 @@ void Application::updateSun() {
     // m_sun.direction = glm::normalize(glm::vec3(0.2f, glm::cos(ph), glm::sin(ph)));
     m_sun.direction = glm::normalize(glm::vec3(-1,-1,1));
     float distToNoon = glm::acos(glm::dot(-m_sun.direction, glm::vec3(0,1,0))) / glm::pi<float>();
-    m_sun.color = glm::mix(glm::vec3(255,255,255), glm::vec3(255,153,51), distToNoon)/255.0f;
+    // m_sun.color = glm::mix(glm::vec3(255,255,255), glm::vec3(255,153,51), distToNoon)/255.0f;
+    m_sun.color = glm::mix(glm::vec3(100,100,255), glm::vec3(255,153,51), distToNoon)/255.0f;
 
-    m_sun.distToNoon = glm::acos(glm::dot(-m_sun.direction, glm::vec3(0.0f,1.0f,0.0f))) / glm::pi<float>();
-    m_sun.nightColor = glm::mix(glm::vec3(80.0f,80.0f,250.0f), glm::vec3(0.0f), m_sun.distToNoon)/255.0f;
-    m_sun.dayColor = glm::mix(glm::vec3(204.0f,204.0f,255.0f), glm::vec3(5.0f,5.0f,25.0f), m_sun.distToNoon)/255.0f;
-    m_sun.sunEdgeColor = glm::vec3(255.0f,119.0f,51.0f)/255.0f;
-    m_sun.sunsetriseColor = glm::vec3(255.0f,119.0f,51.0f)/255.0f;
-    m_sun.sunColor = glm::mix(glm::vec3(255.0f,255.0f,230.0f), glm::vec3(255.0f,153.0f,51.0f), m_sun.distToNoon)/255.0f;
+    // m_sun.distToNoon = glm::acos(glm::dot(-m_sun.direction, glm::vec3(0.0f,1.0f,0.0f))) / glm::pi<float>();
+    // m_sun.nightColor = glm::mix(glm::vec3(80.0f,80.0f,250.0f), glm::vec3(0.0f), m_sun.distToNoon)/255.0f;
+    // m_sun.dayColor = glm::mix(glm::vec3(204.0f,204.0f,255.0f), glm::vec3(5.0f,5.0f,25.0f), m_sun.distToNoon)/255.0f;
+    // m_sun.sunEdgeColor = glm::vec3(255.0f,119.0f,51.0f)/255.0f;
+    // m_sun.sunsetriseColor = glm::vec3(255.0f,119.0f,51.0f)/255.0f;
+    // m_sun.sunColor = glm::mix(glm::vec3(255.0f,255.0f,230.0f), glm::vec3(255.0f,153.0f,51.0f), m_sun.distToNoon)/255.0f;
 }
 
 void Application::updateRenderData() {
@@ -117,15 +118,27 @@ void Application::renderScene(Camera & camera, float deltaTime) {
     UBOPointLight pointLight1{};
     pointLight1.pos = glm::vec3{-7.0f, 3.0f, -6.0f};
     pointLight1.color = glm::vec3{1.0f, 0.4f, 0.4f};
+    pointLight1.a = 0.2f;
+    pointLight1.b = 0.0f;
+    pointLight1.c = 0.0f;
     UBOPointLight pointLight2{};
     pointLight2.pos = glm::vec3{-3.0f, 3.0f, -6.0f};
     pointLight2.color = glm::vec3{1.0f, 0.4f, 0.4f};
+    pointLight2.a = 0.2f;
+    pointLight2.b = 0.0f;
+    pointLight2.c = 0.0f;
     UBOPointLight pointLight3{};
     pointLight3.pos = glm::vec3{3.0f, 3.0f, -6.0f};
     pointLight3.color = glm::vec3{1.0f, 0.4f, 0.4f};
+    pointLight3.a = 0.2f;
+    pointLight3.b = 0.0f;
+    pointLight3.c = 0.0f;
     UBOPointLight pointLight4{};
     pointLight4.pos = glm::vec3{7.0f, 3.0f, -6.0f};
     pointLight4.color = glm::vec3{1.0f, 0.4f, 0.4f};
+    pointLight4.a = 0.2f;
+    pointLight4.b = 0.0f;
+    pointLight4.c = 0.0f;
     pointLights.push_back(pointLight1);
     pointLights.push_back(pointLight2);
     pointLights.push_back(pointLight3);
@@ -186,5 +199,5 @@ void Application::bindRenderData() {
 }
 
 void Application::getSkybox(prt::array<Texture, 6> & cubeMap) const {
-    m_assetManager.loadCubeMap("default", cubeMap);
+    m_assetManager.loadCubeMap("night", cubeMap);
 }
