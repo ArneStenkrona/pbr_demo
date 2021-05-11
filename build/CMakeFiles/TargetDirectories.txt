@@ -1,4 +1,0 @@
-/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles/rebuild_cache.dir
-/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles/edit_cache.dir
-/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles/pbr_demo.dir
-/Users/arnestenkrona/Documents/repositories/pbr_demo/build/CMakeFiles/Shaders.dir
